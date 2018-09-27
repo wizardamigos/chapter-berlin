@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/wizardamigos/chapter-berlin/issues"
   },
-  "homepage": "https://github.com/wizardamigos/chapter-berlin#readme"
+  "homepage": "https://github.com/wizardamigos/chapter-berlin#readme",
+  "devDependencies": {
+    "budo": "^11.3.2"
+  }
 }
