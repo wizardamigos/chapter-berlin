@@ -91,14 +91,27 @@ var head = `
       width: 120px;
       height: 120px;
     }
-    .title {
+    .title1 {
       color: ${W};
       font-family: C64;
       margin-left: 10vw;
       font-size: 30px;
     }
-    .title > span {
+    .title1 > span {
       color: ${lP};
+    }
+    .title2 {
+      color: ${lP};
+      font-family: C64;
+      margin-left: 10vw;
+      font-size: 20px;
+    }
+    .title2 > span {
+      color: ${W};
+      text-shadow: ${lP} 0 0 20px;
+      animation: pulsate 4s ease-in-out;
+      animation-iteration-count: infinite;
+      opacity: 0.1
     }
     .webring {
       text-decoration: underline;
@@ -114,12 +127,20 @@ var head = `
     .chapter-list {
       list-style-image: url(assets/wai-icon1.png)
     }
+    @keyframes pulsate {
+        0% { transform: scale(0.1, 0.1); opacity: 0.1;}
+        50% {opacity: 1.0;}
+        100% { transform: scale(1.2, 1.2); opacity: 0.1;}
+    }
   </style>
 `
 var body = `
   <div class="header">
   <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
-  <h1 class="title">WizardAmigos Chapter: <span>Berlin</span></h1>
+  <div>
+  <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
+  <h2 class="title2"> next event: <span> 2018.10.05-20:00 </span> </h2>
+  </div>
   </div>
   <div class="content">
     <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://ninabreznik.typeform.com/to/RnddyU"></iframe>
