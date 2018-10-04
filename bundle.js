@@ -122,14 +122,14 @@ var body = `
   <h1 class="title">WizardAmigos Chapter: <span>Berlin</span></h1>
   </div>
   <div class="content">
-    <iframe width="100%" height="100%" frameborder="0" src="https://meet.jit.si/play" allow="geolocation; microphone; camera"></iframe>
+    <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://ninabreznik.typeform.com/to/RnddyU"></iframe>
     <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
   </div>
   <h3 class="webring"> other chapters </h3>
   <ul class="chapter-list"><li class="chapter"><a href="http://wizardamigos.com/chapter-taipei/">Taipei</a></li></ul>
+  <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script>
 `
-// <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://ninabreznik.typeform.com/to/RnddyU"></iframe>
-// <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script>
+// <iframe width="100%" height="100%" frameborder="0" src="https://meet.jit.si/play" allow="geolocation; microphone; camera"></iframe>
 document.head.innerHTML = head
 document.body.innerHTML = body
 
