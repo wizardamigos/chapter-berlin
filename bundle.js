@@ -122,7 +122,7 @@ var body = `
   <h1 class="title">WizardAmigos Chapter: <span>Berlin</span></h1>
   </div>
   <div class="content">
-    <iframe width="100%" height="100%" frameborder="0" src="https://meet.jit.si/play"></iframe>
+    <iframe width="100%" height="100%" frameborder="0" src="https://meet.jit.si/play" allow="geolocation; microphone; camera"></iframe>
     <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
   </div>
   <h3 class="webring"> other chapters </h3>
