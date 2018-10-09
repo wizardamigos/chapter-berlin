@@ -143,7 +143,7 @@ var body = `
   </div>
   </div>
   <div class="content">
-    <iframe width="100%" height="100%" frameborder="0" src="https://www.youtube.com/embed/sPy-peIJy00" allow="geolocation; microphone; camera; autoplay; encrypted-media"></iframe>
+    <iframe width="100%" height="100%" frameborder="0" src="https://www.youtube.com/watch?v=cKcbUjpQCoY" allow="geolocation; microphone; camera; autoplay; encrypted-media"></iframe>
     <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
   </div>
   <h3 class="webring"> other chapters </h3>
