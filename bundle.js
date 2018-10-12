@@ -139,11 +139,13 @@ var body = `
   <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
   <div>
     <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
-    <h2 class="title2"> next event: <span> <a href="https://www.meetup.com/WizardAmigos/events/qkmzgqyxnbmb/" target="_blank"> 2018.10.09-20:00 </a> </span></h2>
+    <h2 class="title2"> next event: <span> <a href="https://www.meetup.com/WizardAmigos/events/xhrtjqyxnbqb/" target="_blank"> 2018.10.12-20:00 </a> </span></h2>
   </div>
   </div>
   <div class="content">
-    <iframe width="100%" height="100%" frameborder="0" src="https://www.youtube.com/watch?v=cKcbUjpQCoY" allow="geolocation; microphone; camera; autoplay; encrypted-media"></iframe>
+    <iframe width="100%" height="100%" frameborder="0"
+      src="https://player.twitch.tv/?channel=serapath&autoplay=true""
+      allow="geolocation; microphone; camera; autoplay; encrypted-media" allowfullscreen="true"></iframe>
     <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
   </div>
   <h3 class="webring"> other chapters </h3>
