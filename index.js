@@ -138,7 +138,7 @@ var body = `
   <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
   <div>
     <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
-    <h2 class="title2"> next event: <span> <a href="https://www.meetup.com/WizardAmigos/events/xhrtjqyxnbqb/" target="_blank"> 2018.10.12-20:00 </a> </span></h2>
+    <h2 class="title2"> next event: <span> <a href="https://www.meetup.com/WizardAmigos/events/xhrtjqyxnbfc/" target="_blank"> 2018.10.23-20:00 </a> </span></h2>
   </div>
   </div>
   <div class="content">
