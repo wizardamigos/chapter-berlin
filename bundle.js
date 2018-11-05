@@ -134,26 +134,58 @@ var head = `
     }
   </style>
 `
-var body = `
-  <div class="header">
-  <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
-  <div>
-    <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
-    <h2 class="title2"> next event: <span> <a href="https://www.meetup.com/WizardAmigos/events/xhrtjqyxnbfc/" target="_blank"> 2018.10.23-20:00 </a> </span></h2>
-  </div>
-  </div>
-  <div class="content">
-    <iframe width="100%" height="100%" frameborder="0"
-      src="https://player.twitch.tv/?channel=serapath&autoplay=true""
-      allow="geolocation; microphone; camera; autoplay; encrypted-media" allowfullscreen="true"></iframe>
-    <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
-  </div>
-  <h3 class="webring"> other chapters </h3>
-  <ul class="chapter-list"><li class="chapter"><a href="http://wizardamigos.com/chapter-taipei/">Taipei</a></li></ul>
-`
+document.head.innerHTML = head
 // <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script>
 //     <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://ninabreznik.typeform.com/to/RnddyU"></iframe>
-document.head.innerHTML = head
-document.body.innerHTML = body
+document.body.innerHTML = `
+  <h1> Loading data - please wait ... </h1>
+`
+var meetup_api = 'https://api.meetup.com/2/events?offset=0&format=json&limited_events=False&group_urlname=WizardAmigos&photo-host=public&page=20&fields=&order=time&desc=false&status=upcoming&sig_id=35240262&sig=0ec0705819f4127f8d9396d29db27c58b3f1bb50'
+var url = 'https://cors-anywhere.herokuapp.com/' + meetup_api
+try {
+  var json = JSON.parse(localStorage.lastEvent)
+  var old = new Date(json.time)
+  var now = new Date()
+  var timeDiff = now.getTime() - old.getTime()
+  var diffDays = timeDiff / (1000 * 3600 * 24)
+  if (diffDays < 0) throw new Error('cached event is over')
+  init(json)
+} catch (e) {
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    for (var i = 0; i < data.results.length; i++) {
+      var place = data.results[i].venue.city
+      if (place === "Berlin") {
+        var url = data.results[i].event_url
+        var number = data.results[i].time
+        var time = new Date(number).toString()
+        break
+      }
+    }
+    localStorage.lastEvent = JSON.stringify({ place, time, url })
+    init({ place, time, url })
+  })
+}
+function init ({ place, time, url }) {
+  var body = `
+    <div class="header">
+    <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
+    <div>
+      <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
+      <h2 class="title2"> next event: <span> <a href="${url}" target="_blank"> ${time} </a> </span></h2>
+    </div>
+    </div>
+    <div class="content">
+      <iframe width="100%" height="100%" frameborder="0"
+        src="https://player.twitch.tv/?channel=serapath&autoplay=true""
+        allow="geolocation; microphone; camera; autoplay; encrypted-media" allowfullscreen="true"></iframe>
+      <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
+    </div>
+    <h3 class="webring"> other chapters </h3>
+    <ul class="chapter-list"><li class="chapter"><a href="http://wizardamigos.com/chapter-taipei/">Taipei</a></li></ul>
+  `
+  document.body.innerHTML = body
+}
 
 },{}]},{},[1]);
