@@ -1,3 +1,5 @@
+const chapterpage = require('chapter-page')
+
 // WIZARD COLORS
 var dB = '#43409a' // darkBlue
 var b  = '#3022bb' // blue
@@ -10,11 +12,11 @@ var sY = '#f7da8b' // skinYellow
 var W  = '#ffffff' // white
 var t  = 'rgba(255, 255, 255, .0)'
 // WEBSITE COLORS
-var violet       = '#331e38'
-var grey         = '#a0c1b9'
-var blue         = '#70a0af'
-var lightYellow  = '#f4e8c1'
-var yellow       = '#ffee33'
+// var violet       = '#331e38'
+// var grey         = '#a0c1b9'
+// var blue         = '#70a0af'
+// var lightYellow  = '#f4e8c1'
+// var yellow       = '#ffee33'
 // FONTS
 var fontXXS = '10'
 var fontXS  = fontXXS*1.3
@@ -25,164 +27,90 @@ var fontXXM = fontXXS*2.2
 var fontL   = fontXXS*3
 var fontXL  = fontXXS*3.8
 var fontXXL = fontXXS*6
-var head = `
-  <title> WizardAmigos Chapter - Berlin </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <style>
-    html          {
-      box-sizing  : border-box;
-      display     : table;
-      min-width   : 100%;
-      margin      : 0;
-      font-size   : 18px;
-    }
-    *,*:before,*:after { box-sizing  : inherit; }
-    @font-face    {
-      font-family : C64;
-      src         : url(assets/C64_Pro-STYLE.woff);
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-      background-color: #43409a;
-    }
-    h3 {
-      color: ${W};
-    }
-    iframe {
-      border: 10px solid ${W};
-      width: 100%;
-      height: 100%;
-      flex-grow: 1;
-    }
-    .content {
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
-    .input {
-      width: 100%;
-    }
-    .address {
-      width: 400px;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .header {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100vw;
-      height: 220px;
-    }
-    .logo {
-      margin-left: 20px;
-      margin-top: 10px;
-      width: 120px;
-      height: 120px;
-    }
-    .title1 {
-      color: ${W};
-      font-family: C64;
-      margin-left: 10vw;
-      font-size: 30px;
-    }
-    .title1 > span {
-      color: ${lP};
-    }
-    .title2 {
-      color: ${lP};
-      font-family: C64;
-      margin-left: 10vw;
-      font-size: 20px;
-    }
-    .title2 > span {
-      color: ${W};
-      text-shadow: ${lP} 0 0 20px;
-      animation: pulsate 4s ease-in-out;
-      animation-iteration-count: infinite;
-      opacity: 0.1
-    }
-    .webring {
-      text-decoration: underline;
-      color: ${dP};
-      font-family: C64;
-      font-size: 30px;
-    }
-    .chapter {
-      color: ${lP};
-      font-family: C64;
-      font-size: 15px;
-    }
-    .chapter-list {
-      list-style-image: url(assets/wai-icon1.png)
-    }
-    @keyframes pulsate {
-        0% { transform: scale(0.1, 0.1); opacity: 0.1;}
-        50% {opacity: 1.0;}
-        100% { transform: scale(1.2, 1.2); opacity: 0.1;}
-    }
-  </style>
-`
-document.head.innerHTML = head
-// <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script>
-//     <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="https://ninabreznik.typeform.com/to/RnddyU"></iframe>
-document.body.innerHTML = `
-  <h1> Loading data - please wait ... </h1>
-`
+var fontXXXL = fontXXS*8
+const fontsizes = {
+  fontsize0: fontXXS,
+  fontsize1: fontXS,
+  fontsize2: fontS,
+  fontsize3: fontM,
+  fontsize4: fontXM,
+  fontsize5: fontXXM,
+  fontsize6: fontL,
+  fontsize7: fontXL,
+  fontsize8: fontXXL,
+  fontsize9: fontXXXL,
+}
+const colors = {
+  color0: dB,
+  color1: b,
+  color2: lB,
+  color3: lP,
+  color4: dP,
+  color5: B,
+  color6: g,
+  color7: sY,
+  color8: W,
+  color9: t,
+}
+const theme = { colors, fontsizes }
+const data = {
+  title: 'Berlin',
+  logo: 'assets/wizard3.png',
+  home: 'http://wizardamigos.com/',
+  tabs: [{
+    title: 'livestream',
+    url: 'https://player.twitch.tv/?channel=serapath&autoplay=true'
+  },{
+    title: 'members',
+    url: 'https://asdf.com'
+  }],
+  chat: 'https://gitter.im/wizardamigosinstitute/program/~embed',
+  chapters: [{
+    title: 'Taipei',
+    url: 'http://wizardamigos.com/chapter-taipei/',
+  }]
+}
+
+const { title, logo, home, tabs, chat, chapters } = data
+document.body.innerHTML = `<h1> Loading data - please wait ... </h1>`
 var meetup_api = 'https://api.meetup.com/2/events?offset=0&format=json&limited_events=False&group_urlname=WizardAmigos&photo-host=public&page=20&fields=&order=time&desc=false&status=upcoming&sig_id=35240262&sig=0ec0705819f4127f8d9396d29db27c58b3f1bb50'
 var url = 'https://cors-anywhere.herokuapp.com/' + meetup_api
 try {
-  var json = JSON.parse(localStorage.lastEvent)
-  var old = new Date(json.time)
+  var { place, time, event } = JSON.parse(localStorage.lastEvent)
+  var old = new Date(time)
   var now = new Date()
   var timeDiff = now.getTime() - old.getTime()
   var diffDays = timeDiff / (1000 * 3600 * 24)
   if (diffDays < 0) throw new Error('cached event is over')
-  init(json)
+  data.place = place
+  data.time = time
+  data.event = event
+  init(data)
 } catch (e) {
   fetch(url)
   .then(response => response.json())
-  .then(data => {
-    for (var i = 0; i < data.results.length; i++) {
-      var place = data.results[i].venue.city
-      if (place === "Berlin") {
-        var url = data.results[i].event_url
-        var number = data.results[i].time
+  .then(res => {
+    for (var i = 0; i < res.results.length; i++) {
+      var place = res.results[i].venue.city
+      if (place === title) {
+        var event = res.results[i].event_url
+        var number = res.results[i].time
         var time = new Date(number).toString()
         break
       }
     }
-    localStorage.lastEvent = JSON.stringify({ place, time, url })
-    init({ place, time, url })
+    localStorage.lastEvent = JSON.stringify({ place, event, time })
+    data.place = place
+    data.time = time
+    data.event = event
+    init(data)
   })
 }
-function init ({ place, time, url }) {
-  var body = `
-    <div class="header">
-    <a href="http://wizardamigos.com/"><img class="logo" src="assets/wizard3.png"></a>
-    <div>
-      <h1 class="title1">WizardAmigos Chapter: <span>Berlin</span></h1>
-      <h2 class="title2"> next event: <span> <a href="${url}" target="_blank"> ${time} </a> </span></h2>
-    </div>
-    </div>
-    <div class="content">
-      <iframe width="100%" height="100%" frameborder="0"
-        src="https://player.twitch.tv/?channel=serapath&autoplay=true""
-        allow="geolocation; microphone; camera; autoplay; encrypted-media" allowfullscreen="true"></iframe>
-      <iframe class="iframe" src="https://gitter.im/wizardamigosinstitute/program/~embed"></iframe>
-    </div>
-    <h3 class="webring"> other chapters </h3>
-    <ul class="chapter-list"><li class="chapter"><a href="http://wizardamigos.com/chapter-taipei/">Taipei</a></li></ul>
-  `
+function init (data) {
+  const {
+    head,
+    body,
+  } = chapterpage({ data, theme })
+  document.head.innerHTML = head
   document.body.innerHTML = body
 }
